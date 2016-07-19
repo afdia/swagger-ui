@@ -54,6 +54,8 @@
         dom_id: "swagger-ui-container",
         supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
         onComplete: function(swaggerApi, swaggerUi){
+          // derive base path from window.location.pathname
+          swaggerApi.setBasePath("/" + window.location.pathname.split('/')[1] + "/rest")
           if(typeof initOAuth == "function") {
             initOAuth({
               clientId: "your-client-id",
@@ -78,9 +80,6 @@
         showRequestHeaders: false
       });
       
-      // derive base path from window.location.pathname
-      window.swaggerUi.api.setBasePath("/" + window.location.pathname.split('/')[1] + "/rest")
-
       window.swaggerUi.load();
 
       function log() {
