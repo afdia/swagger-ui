@@ -38,7 +38,7 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "http://petstore.swagger.io/v2/swagger.json";
+        url = "swagger.json";
       }
 
       hljs.configure({
@@ -77,6 +77,9 @@
         defaultModelRendering: 'schema',
         showRequestHeaders: false
       });
+      
+      // derive base path from window.location.pathname
+      window.swaggerUi.api.setBasePath("/" + window.location.pathname.split('/')[1] + "/rest")
 
       window.swaggerUi.load();
 
