@@ -68,7 +68,7 @@
         supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
         onComplete: function(swaggerApi, swaggerUi){
           // derive base path from window.location.pathname, set it to basePath and update footer
-          var fixedBase = "/" + window.location.pathname.split('/')[1] + "/rest";
+          var fixedBase = window.location.pathname.replace("swagger-ui","rest");
           swaggerApi.setBasePath(fixedBase);
           document.getElementsByClassName("footer")[0].getElementsByTagName("h4")[0].childNodes[2].data = ": " +fixedBase + ", ";
           if(typeof initOAuth == "function") {
