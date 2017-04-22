@@ -51,7 +51,12 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "swagger.json";
+        if (window.location.pathname.indexOf("index.html") >= 0) {
+          url = "../swagger.json";
+        }
+        else {
+          url = "swagger.json";
+        }
       }
 
       hljs.configure({
